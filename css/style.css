@@ -4,7 +4,9 @@
     font-family: 'Roboto', sans-serif;
 }
 
-
+body {
+  background-color:eggshell;
+}
 
 .education-entry, .work-entry, .project-entry {
   padding-left: 5%;
