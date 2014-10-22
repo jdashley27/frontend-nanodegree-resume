@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Justin Ashley's Resume</title>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700|Dancing+Script:400,700' rel='stylesheet' type='text/css'>
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"></link>
   <link href="css/style.css" rel="stylesheet" type="text/css"></link>
+
 
   <script src="js/jQuery.js"></script>
   <script src="js/helper.js"></script>
@@ -9,40 +15,42 @@
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
-  <div id="main">
+  <div class="container-fluid">
+    <div id="main">
 
-    <div id="header" class="center-content">
-      <ul id="topContacts" class='flex-box'></ul>
-    </div><!-- end #header -->
+      <div id="header" class="center-content">
+        <ul id="topContacts" class='flex-box'></ul>
+      </div><!-- end #header -->
 
-    <div style='clear: both;'></div>
-    
-    <div id="workExperience" class='gray'>
-      <h2>Work Experience</h2>
-    </div><!-- end #workExperience -->
+      <div style='clear: both;'></div>
+      
+      <div id="workExperience" class='gray'>
+        <h2>Work Experience</h2>
+      </div><!-- end #workExperience -->
 
-    <div id="projects">
-      <h2>Projects</h2>
-    </div><!-- end #projects -->
+      <div id="projects">
+        <h2>Projects</h2>
+      </div><!-- end #projects -->
 
-    <div id="education" class='gray'>
-      <h2>Education</h2>
-    </div> <!-- end #education -->
+      <div id="education" class='gray'>
+        <h2>Education</h2>
+      </div> <!-- end #education -->
 
-    <div id="skillsChart">
-      <h2>Skills Chart</h2>
-    </div><!-- end #skillsChart -->
+      <div id="skillsChart">
+        <h2>Skills Chart</h2>
+      </div><!-- end #skillsChart -->
 
-    <div id="mapDiv">
-      <h2>Where I've Lived and Worked</h2>
-    </div><!-- end #mapDiv -->
+      <div id="mapDiv">
+        <h2>Where I've Lived and Worked</h2>
+      </div><!-- end #mapDiv -->
 
-    <div id="letsConnect" class='dark-gray'>
-      <h2 class='orange center-text'>Let's Connect</h2>
-      <ul id="footerContacts" class="flex-box">
-      </ul>
-    </div><!-- end #letsConnect -->
-  </div><!-- end #main -->
+      <div id="letsConnect" class='dark-gray'>
+        <h2 class='orange center-text'>Let's Connect</h2>
+        <ul id="footerContacts" class="flex-box">
+        </ul>
+      </div><!-- end #letsConnect -->
+    </div><!-- end #main -->
+  </div><!-- end .container-fluid -->
 
   <script src="js/resumeBuilder.js"></script>
 
@@ -72,5 +80,7 @@
     document.getElementById("mapDiv").style.display = "none";
   }
   </script>
+
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

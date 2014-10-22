@@ -4,11 +4,16 @@
     font-family: 'Roboto', sans-serif;
 }
 
+/*
+
 .education-entry, .work-entry, .project-entry {
   padding-left: 5%;
   padding-right: 5%;
 }
 
+.project-entry img {
+  width:300px;
+}
 
 h1 {
 
@@ -16,6 +21,12 @@ h1 {
   color: #F5A623;
   line-height: 48px;
   display: inline;
+  font-family:"Dancing Script", cursive;  
+
+}
+
+h2, h3, h4, h5, h6, li, p, {
+  font-family:"Ubuntu", sans-serif;
 }
 
 h2 {
@@ -116,7 +127,7 @@ a {
   background-color: #4A4A4A;
 }
 
-/* TODO: Replace with image later */
+
 #header {
   background-color: #484848;
 }
@@ -150,8 +161,6 @@ img {
   padding: 10px;
 }
 
-
-/* Bar chart stuff */
 .chart div {
   font: 10px sans-serif;
   background-color: #4A4A4A;
@@ -215,3 +224,5 @@ span {
     display: block;
   }
 }
+
+*/
