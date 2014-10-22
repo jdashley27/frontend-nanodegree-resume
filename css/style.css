@@ -4,21 +4,53 @@
     font-family: 'Roboto', sans-serif;
 }
 
-/*
+body {
+  color:black;
+}
+
+.container {
+  max-width:1200px;
+  margin:0px auto;
+}
 
 .education-entry, .work-entry, .project-entry {
   padding-left: 5%;
   padding-right: 5%;
 }
 
+#projects {
+  background-color:#f3f3f3;
+}
+
 .project-entry img {
   width:300px;
+}
+
+header {
+  width:100%;
+  background-color:#222;
+  height:60px;
+  text-align:center;
+}
+
+.navigation li {
+  display:inline;
+  float:left;
+  position:relative;
+  top:10px;
+}
+
+.navigation li a {
+  color: white;
+  font-weight:bold;
+  font-size:18px;
+  margin-right:7em;
 }
 
 h1 {
 
   font-size: 40px;
-  color: #F5A623;
+  color: #840202;
   line-height: 48px;
   display: inline;
   font-family:"Dancing Script", cursive;  
@@ -32,9 +64,11 @@ h2, h3, h4, h5, h6, li, p, {
 h2 {
   font-style: bold;
   font-size: 24px;
-  color: #999999;
+  color: white;
   line-height: 29px;
   padding: 10px;
+  text-align: center;
+  background-color:#222;
 }
 
 h3 {
@@ -82,21 +116,25 @@ p {
 }
 
 a {
-  color: #1199C3;
+  color: #840202;
   text-decoration: none;
   margin-top: 10px;
   display: block;
 }
 
+a:hover {
+  color:#9d2e2e;
+}
+
 .welcome-message {
   font-style: italic;
   font-size: 18px;
-  color: #F3F3F3;
+  color: #333;
   line-height: 28px;
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  color: ##840202;
   display: none;
 }
 
@@ -105,20 +143,20 @@ a {
 }
 
 .orange {
-  background-color: #F5AE23;
+  background-color: #840202;
 }
 
 .orange-text {
-  color: #F5AE23;
+  color: #840202;
 }
 
 .white-text {
   font-weight: bold;
-  color: #FFFFFF;
+  color: #454545;
 }
 
 .gray {
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
   padding-bottom: 10px;
   clear:both;
 }
@@ -129,7 +167,8 @@ a {
 
 
 #header {
-  background-color: #484848;
+  background-color: #f3f3f3;
+  padding-bottom:120px;
 }
 
 .flex-box {
@@ -178,6 +217,11 @@ span {
 
 #letsConnect {
   text-align: center;
+  background-color:#f3f3f3;
+}
+
+#letsConnect h2 {
+  background-color:#222;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -224,5 +268,3 @@ span {
     display: block;
   }
 }
-
-*/

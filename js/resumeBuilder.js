@@ -17,10 +17,9 @@ var bio = {
 		"email"   : "jdashley27@gmail.com",
 		"twitter" : "jdashley27@twitter.com",
 		"github"  : "jdashley27@github.com",
-		"blog"    : "N/A",
 		"location" : "Missoula, Montana"
 	},
-	"skills" : ["LAMP Stack", "Web Development", "Adobe Creative Suite", "CMS (Magento/Wordpress)", "E-Commerce", "Project Management", "SEO"],
+	"skills" : ["LAMP Stack", "Web Development", "Adobe Creative Suite", "CMS (Magento/Wordpress)", "E-Commerce", "Project Management"],
 	"bioPic" : "images/justin.jpg",
 	"welcomeMsg" : "Welcome to Justin\'s Resum&eacute!"
 };
@@ -134,7 +133,6 @@ function appendBioToDOM(bio) {
 		formattedemail = HTMLemail.replace("%data%", bio.contacts.email),
 		formattedtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter),
 		formattedgithub = HTMLgithub.replace("%data%", bio.contacts.github),
-		formattedblog = HTMLblog.replace("%data%", bio.contacts.blog),
 		formattedlocation = HTMLlocation.replace("%data%", bio.contacts.location),
 		formattedbioPic = HTMLbioPic.replace("%data%", bio.bioPic),
 		formattedWelcomeMsg = HTMLWelcomeMsg.replace("%data%", bio.welcomeMsg);
@@ -146,7 +144,6 @@ function appendBioToDOM(bio) {
 									.append(formattedemail)
 									.append(formattedtwitter)
 									.append(formattedgithub)
-									.append(formattedblog)
 									.append(formattedlocation);
 
 	$("#header").append(formattedbioPic)
