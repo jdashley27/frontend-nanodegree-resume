@@ -9,8 +9,8 @@ body {
 }
 
 .container {
-  max-width:1200px;
-  margin:0px auto;
+  max-width: 1200px;
+  margin: 0px auto;
 }
 
 .education-entry, .work-entry, .project-entry {
@@ -19,7 +19,7 @@ body {
 }
 
 #projects {
-  background-color:#f3f3f3;
+  background-color: #f3f3f3;
 }
 
 .project-entry img {
@@ -27,28 +27,40 @@ body {
 }
 
 header {
-  width:100%;
-  background-color:#222;
-  height:60px;
-  text-align:center;
+  width: 100%;
+  background-color: darkslategray;
+  height: 60px;
+  text-align: center;
+  position: fixed;
+  z-index:999999999999;
+  background-color: url("../images/whitewall_3.jpg");
 }
 
 .navigation li {
-  display:inline;
-  float:left;
-  position:relative;
-  top:10px;
+  display: inline;
+  float: left;
+  position: relative;
+  top: 10px;
+  width: 16%;
+}
+
+.navigation li:first-child {
+  margin-left: 2%;
 }
 
 .navigation li a {
   color: white;
-  font-weight:bold;
-  font-size:18px;
-  margin-right:7em;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+}
+
+.navigation a:hover {
+  text-decoration:underline;
+  color:#fefefe;
 }
 
 h1 {
-
   font-size: 40px;
   color: #840202;
   line-height: 48px;
@@ -95,7 +107,7 @@ h2, h3, h4, h5 {
 .date-text {
   font-style: italic;
   font-size: 14px;
-  color: #999999;
+  color: darkslategray;
   line-height: 16px;
   float: left;
 }
@@ -103,7 +115,7 @@ h2, h3, h4, h5 {
 .location-text {
   font-style: italic;
   font-size: 14px;
-  color: #999999;
+  color: darkslategray;
   line-height: 16px;
   float: right;
 
@@ -168,7 +180,12 @@ a:hover {
 
 #header {
   background-color: #f3f3f3;
-  padding-bottom:120px;
+  padding:120px 80px;
+}
+
+#header, #workExperience, #projects,
+#education, #mapDiv {
+  background-image:url("../images/squared_metal.png");
 }
 
 .flex-box {
@@ -222,6 +239,12 @@ span {
 
 #letsConnect h2 {
   background-color:#222;
+}
+
+@media (max-width:1024px) {
+  header {
+    display:none;
+  }
 }
 
 @media only screen and (max-width: 1024px) {

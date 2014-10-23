@@ -20,7 +20,7 @@ var bio = {
 		"location" : "Missoula, Montana"
 	},
 	"skills" : ["LAMP Stack", "Web Development", "Adobe Creative Suite", "CMS (Magento/Wordpress)", "E-Commerce", "Project Management"],
-	"bioPic" : "images/justin.jpg",
+	"bioPic" : "images/justin.png",
 	"welcomeMsg" : "Welcome to Justin\'s Resum&eacute!"
 };
 /***** END BIO DEFINITION SECTION *****/
@@ -57,20 +57,48 @@ var education = [{
 var projects = [{
 	"title" : "Hunting GPS Maps",
 	"dates" : "December 2012 to Current",
-	"description" : "Lorem ipsum dolores",
+	"description" : "I have been working for this company for close to two years, and am the main developer for the Magento system. Currently, I am in the midst of converting this site " +
+	                "into a responsive theme.",
 	"images" : [{
 			"url" : "images/hunt-home.jpg"
 	}, 
 	{
 			"url" : "images/plat-coverage-map.jpg"
+	},
+	{
+			"url" : "images/pick-your-state.jpg"
 	}]
 }, 
 {
 	"title" : "onXmaps",
 	"dates" : "December 2012 to Current",
-	"description" : "Lorem ipsum dolores",
+	"description" : "As with the previous project, I've been working for this company for two years, and maintain the umbrella site, onXmaps. I will be converting this into a responsive " +
+					"redesign after the vertical, Huntinggpsmaps.com, has been converted.",
 	"images" : [{
 			"url" : "images/onxmaps.jpg"
+	},
+	{
+			"url" : "images/onxmaps2.jpg"
+	},
+	{
+			"url" : "images/onxmaps3.jpg"
+	}]
+},
+{
+	"title" : "Freight Monster",
+	"dates" : "May 2012 to September 2012",
+	"description" : "For this project, I worked with a team of developers to build a custom MVC application for a truck brokerage.",
+	"images" : [{
+			"url" : "images/freightmonster.jpg"
+	}, 
+	{
+			"url" : "images/freightmonster2.jpg"
+	},
+	{
+			"url" : "images/freightmonster3.jpg"
+	},
+	{
+			"url" : "images/freightmonster4.jpg"
 	}]
 }];
 /***** END PROJECT DEFINITION SECTION *****/
@@ -158,6 +186,7 @@ function appendBioToDOM(bio) {
 
 		$("#skills").append(newSkill);
 	}
+
 } // end appendBioToDOM
 
 // Convert this into a function
@@ -220,6 +249,25 @@ function appendSchoolsToDOM(education) {
 	
 	
 } // end appendSchoolsToDOM();
+
+// This function enables smooth scrolling when the navigation header is clicked upon
+function navScrollTo() {
+	$(".navigation a").on("click", function(e) {
+		e.preventDefault();
+			
+		// acquire the target location based upon the data-target attribute, and then calculate it's offset
+		var location = $(this).attr("data-target"),
+			navHeight = $("header").height(),
+			offset = $( "#" + location ).offset();
+
+		offset.top -= navHeight;
+		
+		// Animate page to the desired page section
+		$( "body, html" ).animate({
+			"scrollTop" : offset.top
+		}, 800 );
+	});
+} // end navScrollTo();
 /***** END FUNCTIONS SECTIONS *****/
 
 
@@ -229,4 +277,5 @@ appendBioToDOM(bio);
 appendJobsToDOM(work);
 appendProjectsToDOM(projects);
 appendSchoolsToDOM(education);
+navScrollTo();
 /***** END INITIALIZE PAGE FUNCTIONALITY *****/
