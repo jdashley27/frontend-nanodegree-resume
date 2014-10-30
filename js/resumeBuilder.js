@@ -1,10 +1,10 @@
 //inName("justin ashley");
 
 // Initialize all base settings
-$("#workExperience").append(HTMLworkStart);
-$("#education").append(HTMLschoolStart);
-$("#projects").append(HTMLprojectStart);
-$("#mapDiv").append(googleMap);
+//$("#workExperience").append(HTMLworkStart);
+//$("#education").append(HTMLschoolStart);
+//$("#projects").append(HTMLprojectStart);
+//$("#mapDiv").append(googleMap);
 
 
 /***** BIO DEFINITION SECTION *****/
@@ -21,13 +21,71 @@ var bio = {
 	},
 	"skills" : ["LAMP Stack", "Web Development", "Adobe Creative Suite", "CMS (Magento/Wordpress)", "E-Commerce", "Project Management"],
 	"bioPic" : "images/justin.png",
-	"welcomeMsg" : "Welcome to Justin\'s Resum&eacute!"
-};
+	"welcomeMsg" : "Welcome to Justin\'s Resum&eacute!",
+
+	appendBio : function() {
+		var formattedheaderName = HTMLheaderName.replace("%data%", bio.name);
+		 	formattedheaderRole = HTMLheaderRole.replace("%data%", bio.role),
+		 	formattedcontactGeneric = HTMLcontactGeneric.replace("%contact%", "Contact").replace("%data%", bio.contacts.generic),
+			formattedmobile = HTMLmobile.replace("%data%", bio.contacts.mobile),
+			formattedemail = HTMLemail.replace("%data%", bio.contacts.email),
+			formattedtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter),
+			formattedgithub = HTMLgithub.replace("%data%", bio.contacts.github),
+			formattedlocation = HTMLlocation.replace("%data%", bio.contacts.location),
+			formattedbioPic = HTMLbioPic.replace("%data%", bio.bioPic),
+			formattedWelcomeMsg = HTMLWelcomeMsg.replace("%data%", bio.welcomeMsg);
+
+		$("#topContacts").append(formattedcontactGeneric);
+
+		// Save time by appending the same data to both divs at once
+		$("#topContacts, #footerContacts").append(formattedmobile)
+										.append(formattedemail)
+										.append(formattedtwitter)
+										.append(formattedgithub)
+										.append(formattedlocation);
+
+		$("#header").append(formattedbioPic)
+					.prepend(formattedheaderRole)
+					.prepend(formattedheaderName)
+					.append(formattedWelcomeMsg)
+					.append(HTMLskillsStart);
+
+		for(skill in bio.skills) {
+
+			var newSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+
+			$("#skills").append(newSkill);
+		} // end for();
+	}, // end appendBio();
+
+	appendMap : function() {
+		$("#mapDiv").append(googleMap);
+		initializeMap();
+	},
+
+	scroll : function() {
+		$(".navigation a").on("click", function(e) {
+			e.preventDefault();
+				
+			// acquire the target location based upon the data-target attribute, and then calculate it's offset
+			var location = $(this).attr("data-target"),
+				navHeight = $("header").height(),
+				offset = $( "#" + location ).offset();
+
+			offset.top -= navHeight;
+			
+			// Animate page to the desired page section
+			$( "body, html" ).animate({
+				"scrollTop" : offset.top
+			}, 800 );
+		});
+	} // end scroll();
+}
 /***** END BIO DEFINITION SECTION *****/
 
 /***** BEGIN EDUCATION DEFINITION SECTION *****/
-var education = [{
-	"schools" : [{
+var education = {
+	schools : [{
 		"name" : "Sessions College for Professional Design",
 		"location" : "Tempe, Arizona",
 		"degree"   : "Associates Degree in Occupational Studies of Web Design",
@@ -43,64 +101,114 @@ var education = [{
 		"datesAttended" : "October 2014 to Current",
 		"url" : "https://www.udacity.com/"
 	}],
-	"onlineCourses" : [{
+	
+	onlineCourses : [{
 			"title" : "HTML",
 			"school" : "Code School",
 			"datesAttended" : "Jan 2013 to Current",
 			"url"    : "https://www.codeschool.com/"
-	}]
-}];
+	}],
+
+	appendEducation : function() {
+
+		$("#education").append(HTMLschoolStart);
+
+		for( school in education.schools) {
+
+			var schoolName = HTMLschoolName.replace("%data%", education.schools[school].name),
+				schoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree),
+				schoolDates = HTMLschoolDates.replace("%data%", education.schools[school].datesAttended),
+				schoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location),
+				schoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+
+			// Now add the information to the DOM
+			$(".education-entry").append(schoolName)
+				     .append(schoolDegree)
+				     .append(schoolDates)
+				     .append(schoolLocation)
+				     .append(schoolMajor);	
+		} // end for()
+
+
+	} // end appendSchoolsToDOM();
+
+};
+
 /****** END EDUCATION DEFINITION SECTION *****/
 
 
 /***** PROJECT DEFINITION SECTION ******/
-var projects = [{
-	"title" : "Hunting GPS Maps",
-	"dates" : "December 2012 to Current",
-	"description" : "I have been working for this company for close to two years, and am the main developer for the Magento system. Currently, I am in the midst of converting this site " +
-	                "into a responsive theme.",
-	"images" : [{
-			"url" : "images/hunt-home.jpg"
-	}, 
-	{
-			"url" : "images/plat-coverage-map.jpg"
-	},
-	{
-			"url" : "images/pick-your-state.jpg"
-	}]
-}, 
-{
-	"title" : "onXmaps",
-	"dates" : "December 2012 to Current",
-	"description" : "As with the previous project, I've been working for this company for two years, and maintain the umbrella site, onXmaps. I will be converting this into a responsive " +
-					"redesign after the vertical, Huntinggpsmaps.com, has been converted.",
-	"images" : [{
-			"url" : "images/onxmaps.jpg"
-	},
-	{
-			"url" : "images/onxmaps2.jpg"
-	},
-	{
-			"url" : "images/onxmaps3.jpg"
-	}]
-},
-{
-	"title" : "Freight Monster",
-	"dates" : "May 2012 to September 2012",
-	"description" : "For this project, I worked with a team of developers to build a custom MVC application for a truck brokerage.",
-	"images" : [{
-			"url" : "images/freightmonster.jpg"
-	}, 
-	{
-			"url" : "images/freightmonster2.jpg"
-	},
-	{
-			"url" : "images/freightmonster3.jpg"
-	},
-	{
-			"url" : "images/freightmonster4.jpg"
-	}]
-}];
+var projects = {
+		projectsList : [{
+			"title" : "Hunting GPS Maps",
+			"dates" : "December 2012 to Current",
+			"description" : "I have been working for this company for close to two years, and am the main developer for the Magento system. Currently, I am in the midst of converting this site " +
+			                "into a responsive theme.",
+			"images" : [{
+					"url" : "images/hunt-home.jpg"
+			}, 
+			{
+					"url" : "images/plat-coverage-map.jpg"
+			},
+			{
+					"url" : "images/pick-your-state.jpg"
+			}]
+		}, 
+		{
+			"title" : "onXmaps",
+			"dates" : "December 2012 to Current",
+			"description" : "As with the previous project, I've been working for this company for two years, and maintain the umbrella site, onXmaps. I will be converting this into a responsive " +
+							"redesign after the vertical, Huntinggpsmaps.com, has been converted.",
+			"images" : [{
+					"url" : "images/onxmaps.jpg"
+			},
+			{
+					"url" : "images/onxmaps2.jpg"
+			},
+			{
+					"url" : "images/onxmaps3.jpg"
+			}]
+		},
+		{
+			"title" : "Freight Monster",
+			"dates" : "May 2012 to September 2012",
+			"description" : "For this project, I worked with a team of developers to build a custom MVC application for a truck brokerage.",
+			"images" : [{
+					"url" : "images/freightmonster.jpg"
+			}, 
+			{
+					"url" : "images/freightmonster2.jpg"
+			},
+			{
+					"url" : "images/freightmonster3.jpg"
+			},
+			{
+					"url" : "images/freightmonster4.jpg"
+			}]
+		}],
+
+		appendProjects : function(projects) {
+
+			$("#projects").append(HTMLprojectStart);
+
+			for(project in projects) {
+
+				var projectTitle = HTMLprojectTitle.replace("%data%", projects[project].title),
+				 	projectDates = HTMLprojectDates.replace("%data%", projects[project].dates),
+					projectDescription = HTMLprojectDescription.replace("%data%", projects[project].description);
+
+					$(".project-entry").append(projectTitle)
+								.append(projectDates)
+								.append(projectDescription);
+
+					for(image in projects[project].images) {
+						var projectImage = HTMLprojectImage.replace("%data%", projects[project].images[image].url);
+
+						$(".project-entry").append(projectImage);
+					} 
+			}
+		} // end appendProjects();
+}
 /***** END PROJECT DEFINITION SECTION *****/
 
 /***** WORK DEFINITION SECTION *****/
@@ -134,64 +242,12 @@ var work = {
 			"description" : "As a freelancer, I work with various companies or individuals who need custom built websites to either market their services, or provide information for specific " +
 							"purposes. This includes utilizing CMS systems, such as Wordpress or Magento, or building custom solutions for each client's specific needs."
 		}
-	]
-};
-/***** END WORK DEFINITION SECTION *****/
+	],
 
-/***** FUNCTIONS SECTION *****/
-function inName(name) {
-
-	name = name.trim().split(" ");
-	name[1] = name[1].toUpperCase();
-	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-
-	console.log(name[0] + " " + name[1]);
-
-	return name[0] + " " + name[1];
-
-
-} // end inName()
-
-// Go through the bio object and append the data to the DOM
-function appendBioToDOM(bio) {
-	var formattedheaderName = HTMLheaderName.replace("%data%", bio.name);
-	 	formattedheaderRole = HTMLheaderRole.replace("%data%", bio.role),
-	 	formattedcontactGeneric = HTMLcontactGeneric.replace("%contact%", "Contact").replace("%data%", bio.contacts.generic),
-		formattedmobile = HTMLmobile.replace("%data%", bio.contacts.mobile),
-		formattedemail = HTMLemail.replace("%data%", bio.contacts.email),
-		formattedtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter),
-		formattedgithub = HTMLgithub.replace("%data%", bio.contacts.github),
-		formattedlocation = HTMLlocation.replace("%data%", bio.contacts.location),
-		formattedbioPic = HTMLbioPic.replace("%data%", bio.bioPic),
-		formattedWelcomeMsg = HTMLWelcomeMsg.replace("%data%", bio.welcomeMsg);
-
-	$("#topContacts").append(formattedcontactGeneric);
-
-	// Save time by appending the same data to both divs at once
-	$("#topContacts, #footerContacts").append(formattedmobile)
-									.append(formattedemail)
-									.append(formattedtwitter)
-									.append(formattedgithub)
-									.append(formattedlocation);
-
-	$("#header").append(formattedbioPic)
-				.prepend(formattedheaderRole)
-				.prepend(formattedheaderName)
-				.append(formattedWelcomeMsg)
-				.append(HTMLskillsStart);
-
-	for(skill in bio.skills) {
-
-		var newSkill = HTMLskills.replace("%data%", bio.skills[skill]);
-
-		$("#skills").append(newSkill);
-	}
-
-} // end appendBioToDOM
-
-// Convert this into a function
-function appendJobsToDOM(work) {
-	for(job in work.jobs) {
+	appendJobs : function() {
+		$("#workExperience").append(HTMLworkStart);
+		
+		for(job in work.jobs) {
 		// Need to loop through and update all of the values within the array
 
 		var	formattedworkEmployer    = HTMLworkEmployer.replace("%data%", work.jobs[job].employer),
@@ -205,77 +261,17 @@ function appendJobsToDOM(work) {
 						.append(formattedworkDates)
 						.append(formattedworkLocation)
 						.append(formattedworkDescription);
+		}
+
 	}
-} // end appendJobsToDOM()
-
-// Loop through projects and append it to project area
-function appendProjectsToDOM(projects) {
-	for(project in projects) {
-
-		var projectTitle = HTMLprojectTitle.replace("%data%", projects[project].title),
-		 	projectDates = HTMLprojectDates.replace("%data%", projects[project].dates),
-			projectDescription = HTMLprojectDescription.replace("%data%", projects[project].description);
-
-			$(".project-entry").append(projectTitle)
-						.append(projectDates)
-						.append(projectDescription);
-
-			for(image in projects[project].images) {
-				var projectImage = HTMLprojectImage.replace("%data%", projects[project].images[image].url);
-
-				$(".project-entry").append(projectImage);
-			} 
-	}
-} // end appendProjectsToDOM();
-
-// Loop through education and append the data to the DOM
-function appendSchoolsToDOM(education) {
-
-		for( school in education[0].schools) {
-
-			var schoolName = HTMLschoolName.replace("%data%", education[0].schools[school].name),
-				schoolDegree = HTMLschoolDegree.replace("%data%", education[0].schools[school].degree),
-				schoolDates = HTMLschoolDates.replace("%data%", education[0].schools[school].datesAttended),
-				schoolLocation = HTMLschoolLocation.replace("%data%", education[0].schools[school].location),
-				schoolMajor = HTMLschoolMajor.replace("%data%", education[0].schools[school].major);
-
-			// Now add the information to the DOM
-			$(".education-entry").append(schoolName)
-				     .append(schoolDegree)
-				     .append(schoolDates)
-				     .append(schoolLocation)
-				     .append(schoolMajor);	
-		} // end for()
-	
-	
-} // end appendSchoolsToDOM();
-
-// This function enables smooth scrolling when the navigation header is clicked upon
-function navScrollTo() {
-	$(".navigation a").on("click", function(e) {
-		e.preventDefault();
-			
-		// acquire the target location based upon the data-target attribute, and then calculate it's offset
-		var location = $(this).attr("data-target"),
-			navHeight = $("header").height(),
-			offset = $( "#" + location ).offset();
-
-		offset.top -= navHeight;
-		
-		// Animate page to the desired page section
-		$( "body, html" ).animate({
-			"scrollTop" : offset.top
-		}, 800 );
-	});
-} // end navScrollTo();
-/***** END FUNCTIONS SECTIONS *****/
+};
+/***** END WORK DEFINITION SECTION *****/
 
 
 /***** INITIALIZE PAGE FUNCTIONALITY *****/
-initializeMap();
-appendBioToDOM(bio);
-appendJobsToDOM(work);
-appendProjectsToDOM(projects);
-appendSchoolsToDOM(education);
-navScrollTo();
-/***** END INITIALIZE PAGE FUNCTIONALITY *****/
+work.appendJobs();
+bio.appendBio();
+bio.appendMap();
+bio.scroll();
+projects.appendProjects(projects.projectsList);
+education.appendEducation();
