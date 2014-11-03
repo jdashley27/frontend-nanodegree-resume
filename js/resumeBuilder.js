@@ -24,6 +24,13 @@ var bio = {
 	"welcomeMsg" : "Welcome to Justin\'s Resum&eacute!",
 
 	appendBio : function() {
+
+		// Initialize the Google map
+		bio.appendMap();
+
+		// Initialize the navigation
+		bio.scroll();
+
 		var formattedheaderName = HTMLheaderName.replace("%data%", bio.name);
 		 	formattedheaderRole = HTMLheaderRole.replace("%data%", bio.role),
 		 	formattedcontactGeneric = HTMLcontactGeneric.replace("%contact%", "Contact").replace("%data%", bio.contacts.generic),
@@ -63,6 +70,7 @@ var bio = {
 		initializeMap();
 	},
 
+	// This controls the smooth scrolling for the navigation
 	scroll : function() {
 		$(".navigation a").on("click", function(e) {
 			e.preventDefault();
@@ -271,7 +279,5 @@ var work = {
 /***** INITIALIZE PAGE FUNCTIONALITY *****/
 work.appendJobs();
 bio.appendBio();
-bio.appendMap();
-bio.scroll();
 projects.appendProjects(projects.projectsList);
 education.appendEducation();

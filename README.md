@@ -6,3 +6,7 @@ For this project, I found the use of JavaScript to inject data from JSON objects
 I've updated the CSS on the page to add diversity in it's design, as-well-as a menu navigation that is fixed to the top. The page isn't very responsive, as I didn't change the framework and wanted to focus primarily on working with the JSON objects.
 
 These projects have been great, and I'm looking forward to starting on Project 3....
+
+##Update
+
+I've updated the file, and moved all of the functions to be encapsulated within their respective object. All of the initiation calls were also moved into their respective objects.
